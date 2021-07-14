@@ -11,10 +11,12 @@
 
   <modules>
     <module>bugreport-tasklist-sortbyid</module>
+	<module>callactivity-with-messageend-event</module>
   </modules>			
   
   <properties>
     <camunda.version>7.15.0</camunda.version>
+	<camunda.scenario.version>2.0.0-SNAPSHOT</camunda.scenario.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,7 +32,31 @@
         <scope>import</scope>
         <type>pom</type>
       </dependency>
-    </dependencies>
+
+	<dependency>
+		<groupId>org.camunda.bpm.extension.scenario</groupId>
+		<artifactId>camunda-platform-scenario-runner</artifactId>
+		<version>${camunda.scenario.version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.camunda.bpm.extension.scenario</groupId>
+		<artifactId>camunda-platform-scenario-report</artifactId>
+		<version>${camunda.scenario.version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.camunda.bpm.extension.scenario</groupId>
+		<artifactId>camunda-platform-scenario-cucumber</artifactId>
+		<version>${camunda.scenario.version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.camunda.bpm.extension</groupId>
+		<artifactId>camunda-bpm-junit5</artifactId>
+		<version>1.0.2</version>
+	</dependency>
+	</dependencies>
   </dependencyManagement>
 
   <dependencies>
@@ -54,6 +80,13 @@
       <artifactId>assertj-core</artifactId>
       <version>3.18.1</version>
       <scope>test</scope>
+    </dependency>
+	
+	<!-- Required for scenario testing -->
+    <dependency>
+	  <groupId>org.camunda.bpm.extension.scenario</groupId>
+	  <artifactId>camunda-platform-scenario-runner</artifactId>
+	  <scope>test</scope>
     </dependency>
 
     <!-- Required to use Spin dataformat support -->
